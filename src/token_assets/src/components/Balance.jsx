@@ -6,12 +6,15 @@ function Balance() {
   
   const [inputValue, setInput] = useState("");
   const [balanceResult, setBalnace] = useState("");
-  setBalnace(balance.toLocaleString());
+  const [cryptoSymbol, setSymbol] = useState("");
+ 
 
   async function handleClick() {
     console.log("Balance Button Clicked");
     const principal = Principal.fromText(inputValue);
     const balance = await token.balanceOf(principal);
+    setBalnace(balance.toLocaleString());
+    setSymbol(await token.getSymbol());
   }
 
 
@@ -35,7 +38,7 @@ function Balance() {
           Check Balance
         </button>
       </p>
-      <p>This account has a balance of {balance}.</p>
+      <p>This account has a balance of {balance} {cryptoSymbol}.</p>
     </div>
   );
 }
