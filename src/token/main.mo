@@ -1,9 +1,10 @@
 import Principal "mo:base/Principal";
 import HashMap "mo:base/HashMap";
+import Debug "mo:base/Debug";
 
 actor Token {
 
-    var owner : Principal = Principal.fromText("");
+    var owner : Principal = Principal.fromText("yhnky-yvzb5-tjllh-xw2qh-43jgt-igcz5-vafwp-mw3ya-4vnwq-n2w52-xae");
     var totalSupply : Nat = 1000000000;
     var symbol : Text = "DMAC";
 
@@ -24,4 +25,8 @@ actor Token {
     public query func getSymbol() :  async Text {
         return symbol;
     };
+
+    public shared(msg) func payOut() : async Text {
+        return "Success";
+    }
 };

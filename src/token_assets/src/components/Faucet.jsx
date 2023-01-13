@@ -1,8 +1,10 @@
 import React from "react";
+import { token } from "../../declarations/token"
 
 function Faucet() {
 
   async function handleClick(event) {
+    await token.payOut();
 
   }
 
