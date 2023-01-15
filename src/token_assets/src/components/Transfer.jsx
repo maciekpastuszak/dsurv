@@ -10,7 +10,7 @@ function Transfer() {
   async function handleClick() {
     const recipient = Principal.fromText(recipientId);
     const amountToTransfer = Number(amount);
-    await token.transfer(recipientId, amount);
+    await token.transfer(recipient, amountToTransfer);
   }
 
   return (
