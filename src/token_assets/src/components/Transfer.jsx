@@ -7,12 +7,17 @@ function Transfer() {
   const [recipientId, setId] = useState("");
   const [amount, setAmount] = useState("");
   const [disabled, isDisabled] = useState(false);
+  const [feedback, setFeedback] = useState("");
+  const [isHidden, setHidden] = useState(true);
 
   async function handleClick() {
+    setHidden(true);
     setDisable(true);
     const recipient = Principal.fromText(recipientId);
     const amountToTransfer = Number(amount);
-    await token.transfer(recipient, amountToTransfer);
+    const result = await token.transfer(recipient, amountToTransfer);
+    setFeedback(result);
+    setHidden(false);
     setDisable(false);
   }
 
@@ -50,6 +55,7 @@ function Transfer() {
             Transfer
           </button>
         </p>
+        <p hidden={isHidden}>{feedback}</p>
       </div>
     </div>
   );
