@@ -4,9 +4,11 @@ import Debug "mo:base/Debug";
 
 actor Token {
 
-    var owner : Principal = Principal.fromText("yhnky-yvzb5-tjllh-xw2qh-43jgt-igcz5-vafwp-mw3ya-4vnwq-n2w52-xae");
-    var totalSupply : Nat = 1000000000;
-    var symbol : Text = "DMAC";
+    let owner : Principal = Principal.fromText("yhnky-yvzb5-tjllh-xw2qh-43jgt-igcz5-vafwp-mw3ya-4vnwq-n2w52-xae");
+    let totalSupply : Nat = 1000000000;
+    let symbol : Text = "DMAC";
+
+    stable var balanceEntries: [(Principal, Nat)] = [];
 
     var balances = HashMap.HashMap<Principal, Nat>(1, Principal.equal, Principal.hash);
 
@@ -50,5 +52,13 @@ actor Token {
             return "Insufficient funds"
         }
        
+    };
+
+    system func preupgrade() {
+
+    };
+
+     system func postupgrade() {
+
     };
 };
