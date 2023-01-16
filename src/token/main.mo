@@ -1,6 +1,7 @@
 import Principal "mo:base/Principal";
 import HashMap "mo:base/HashMap";
 import Debug "mo:base/Debug";
+import Iter "mo:base/Iter";
 
 actor Token {
 
@@ -55,10 +56,10 @@ actor Token {
     };
 
     system func preupgrade() {
-
+        balanceEntries := Iter.toArray(balances.entrie());
     };
 
      system func postupgrade() {
-
+        balances := HashMap.fromIter<Principal, Nat>(balanceEntries.val(), 1, Principal.equal, Principal.hash)
     };
 };
