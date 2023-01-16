@@ -9,11 +9,9 @@ actor Token {
     let totalSupply : Nat = 1000000000;
     let symbol : Text = "DMAC";
 
-    stable var balanceEntries: [(Principal, Nat)] = [];
+    private stable var balanceEntries : [(Principal, Nat)] = [];
 
-    var balances = HashMap.HashMap<Principal, Nat>(1, Principal.equal, Principal.hash);
-
-    balances.put(owner, totalSupply);
+    private var balances = HashMap.HashMap<Principal, Nat>(1, Principal.equal, Principal.hash);
 
     public query func balanceOf(who: Principal) : async Nat {
         
@@ -60,6 +58,10 @@ actor Token {
     };
 
      system func postupgrade() {
-        balances := HashMap.fromIter<Principal, Nat>(balanceEntries.val(), 1, Principal.equal, Principal.hash)
+        balances := HashMap.fromIter<Principal, Nat>(balanceEntries.val(), 1, Principal.equal, Principal.hash);
+        if (blances.size() < 1) {
+
+            balances.put(owner, totalSupply);
+        }
     };
 };
