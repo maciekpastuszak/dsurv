@@ -13,7 +13,7 @@ actor Token {
 
     private var balances = HashMap.HashMap<Principal, Nat>(1, Principal.equal, Principal.hash);
 
-      if (blances.size() < 1) {
+      if (balances.size() < 1) {
 
             balances.put(owner, totalSupply);
         };
@@ -59,12 +59,12 @@ actor Token {
     };
 
     system func preupgrade() {
-        balanceEntries := Iter.toArray(balances.entrie());
+        balanceEntries := Iter.toArray(balances.entry());
     };
 
      system func postupgrade() {
-        balances := HashMap.fromIter<Principal, Nat>(balanceEntries.val(), 1, Principal.equal, Principal.hash);
-        if (blances.size() < 1) {
+        balances := HashMap.fromIter<Principal, Nat>(balancesEntries.val(), 1, Principal.equal, Principal.hash);
+        if (balances.size() < 1) {
 
             balances.put(owner, totalSupply);
         }
