@@ -1,3 +1,7 @@
+# dsurv - my dfinity token app. 
+
+Created for the training purpose, to learn how to create my own blockchain tokens. It is based on dfinity, writen with Motoko backend
+
 # Check your Balance
 
 1. Find out your principal id:
