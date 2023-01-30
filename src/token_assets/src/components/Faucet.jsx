@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { token, cainsterId, createActor } from "../../../declarations/token";
 import {AuthClient} from "@dfinity/auth-client";
 
-function Faucet() {
+function Faucet(props) {
 
 
   const [isDisabled,, setDisabled] = useState(false);
@@ -32,7 +32,7 @@ function Faucet() {
         </span>
         Faucet
       </h2>
-      <label>Get your free DAngela tokens here! Claim 10,000 DANG coins to your account.</label>
+      <label>Get your free DAngela tokens here! Claim 10,000 DMAC coins to {props.userPrincipal}.</label>
       <p className="trade-buttons">
         <button id="btn-payout" onClick={handleClick} disabled={isDisabled}>
          {buttonText}
