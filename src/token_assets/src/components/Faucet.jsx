@@ -19,7 +19,7 @@ function Faucet() {
         identity,
       },
     });
-    const result = await token.payOut();
+    const result = await authenticatedCanister.payOut();
     setText(result);
 
   }
